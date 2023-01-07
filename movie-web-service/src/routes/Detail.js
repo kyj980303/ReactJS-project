@@ -22,19 +22,20 @@ function Detail() {
   console.log(movies);
 
   return (
-    <div>
+    <div className="movie">
       {loading ? (
-        <h1>loading...</h1>
+        <h1 className="loading">loading...</h1>
       ) : (
         <div>
           <DetailMovie
             title={movies.title}
-            coverImg={movies.medium_cover_image}
-            genres={movies.genres}
+            coverImg={movies.large_cover_image}
             year={movies.year}
             rating={movies.rating}
             runtime={movies.runtime}
-            synopsis={movies.synopsis}
+            like={movies.like_count}
+            download={movies.download_count}
+            description_full={movies.description_full}
             url={movies.url}
           />
         </div>

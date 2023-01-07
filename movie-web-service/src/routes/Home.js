@@ -21,22 +21,25 @@ function Home() {
   }, []);
 
   return (
-    <div>
+    <div className="movie">
       {loading ? (
-        <h1>Loading...</h1>
+        <h1 className="loading">Loading...</h1>
       ) : (
-        <div>
+        <ul className="movieList">
+          <h1 className="tit">
+            Movie rating of <span>8</span> or <span>higher </span>
+            <p>movie list 🍿 🎬</p>
+          </h1>
           {movies.map((movie) => (
             <Movie
               key={movie.id}
               id={movie.id}
               coverImg={movie.medium_cover_image}
               title={movie.title}
-              summary={movie.summary}
-              genres={movie.genres}
+              rating={movie.rating}
             />
           ))}
-        </div>
+        </ul>
       )}
     </div>
   );

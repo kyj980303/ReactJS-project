@@ -3,31 +3,55 @@ import PropTypes from "prop-types";
 function DetailMovie({
   title,
   coverImg,
-  genres,
   year,
   rating,
   runtime,
-  synopsis,
+  like,
+  download,
+  description_full,
   url,
 }) {
   return (
-    <div>
-      <h1>{title}</h1>
-      <ul>
+    <div className="detailMovie">
+      <h1 className="movieTitle">🎬 {title} 🎬</h1>
+      <ul className="detail">
         <li>
-          <img src={coverImg} alt={title} />
+          <img src={coverImg} alt={title} className="coverImg" />
         </li>
         <li>
-          <p>genres : {genres}</p>
-          <p>year: {year}</p>
-          <p>rating: {rating}</p>
-          <p>runtime: {runtime}</p>
+          <p>
+            <span>Release date : </span> {year}
+          </p>
+          <p>
+            <span>Rating : </span> {rating}
+          </p>
+          <p>
+            <span>Runtime : </span>
+            {runtime} 분
+          </p>
+          <p>
+            <span> Like : </span>
+            {like}
+          </p>
+          <p>
+            <span>Download : </span>
+            {download}
+          </p>
         </li>
       </ul>
-      <h4>synopsis</h4>
-      <p>{synopsis}</p>
-      <p>For more information</p>
-      <p>{url}</p>
+      <h4 className="syn">📽 synopsis</h4>
+      {description_full === "" ? (
+        <p className="synp">
+          If you are curious about the plot of the movie, please click the link
+          below.
+        </p>
+      ) : (
+        <p className="synp">{description_full}</p>
+      )}
+      <p className="infor">👀 For more information ⬇︎</p>
+      <p className="synp2">
+        <a href={url}>{url}</a>
+      </p>
     </div>
   );
 }
@@ -39,7 +63,7 @@ DetailMovie.propTypes = {
   year: PropTypes.number.isRequired,
   rating: PropTypes.number.isRequired,
   runtime: PropTypes.number.isRequired,
-  synopsis: PropTypes.string.isRequired,
+  description_full: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
 };
 

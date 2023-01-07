@@ -1,0 +1,153 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.movie {
+  width: 100%;
+  height: auto;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: rgb(44, 50, 57);
+}
+.movie::after {
+  content: "";
+  clear: both;
+  display: block;
+}
+.movie .movieList {
+  width: 90%;
+  height: auto;
+  margin: 0 auto;
+  margin-right: 3.8%;
+}
+.movie .movieList h1 {
+  color: #fefefe;
+}
+.movieList::after {
+  content: "";
+  clear: both;
+  display: block;
+}
+.movie .movieList li {
+  width: 16.9%;
+  height: 450px;
+  list-style: none;
+  float: left;
+  margin-left: 2%;
+}
+.link {
+  color: #fefefe;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.link:hover {
+  width: 100%;
+  color: rgb(225, 243, 66);
+  transition: all 0.3s;
+}
+.rat {
+  color: yellow;
+}
+.movieImg {
+  width: 100%;
+  height: auto;
+}
+.movieImg:hover {
+  opacity: 0.5;
+  transition: all 0.2s;
+}
+.tit {
+  margin-left: 2%;
+  margin-bottom: 50px;
+  font-size: 50px;
+}
+.tit span {
+  color: yellow;
+}
+.loading {
+  color: #fefefe;
+  font-size: 20px;
+  text-align: center;
+  height: 1080px;
+  line-height: 550px;
+}
+.detailMovie {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+.movieTitle {
+  color: #fefefe;
+  font-weight: normal;
+  text-align: center;
+  font-size: 50px;
+}
+.detail {
+  width: 80%;
+  height: auto;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  margin: 0 auto;
+}
+.detail::after {
+  content: "";
+  clear: both;
+  display: block;
+}
+.detail li {
+  float: left;
+  width: 30%;
+  list-style: none;
+}
+.detail li:nth-of-type(1) {
+  margin-left: 19%;
+  margin-right: 2%;
+}
+.coverImg {
+  width: 100%;
+  height: auto;
+}
+.detail li p span {
+  color: rgb(0, 157, 255);
+  font-size: 25px;
+}
+.detail li p:nth-of-type(1) {
+  margin-top: 15px;
+}
+.detail li p {
+  color: #fefefe;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+.syn {
+  width: 80%;
+  margin-left: 25%;
+  color: #fefefe;
+  font-size: 30px;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+.synp {
+  width: 50%;
+  margin-left: 25%;
+  color: #fefefe;
+  font-size: 20px;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+}
+.infor {
+  width: 50%;
+  margin-left: 25%;
+  color: #fefefe;
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+.synp2 a {
+  width: 50%;
+  margin-left: 25%;
+  color: rgb(0, 157, 255);
+  font-size: 20px;
+  letter-spacing: 1px;
+  font-size: 18px;
+}
