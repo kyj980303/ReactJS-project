@@ -9,9 +9,9 @@ const Nweet = ({ nweetObj, isOwner }) => {
   const onDeleteClick = async () => {
     // alert창과 비슷 -> 확인을 누르면 true리턴
     const ok = window.confirm("Are you sure you want to delete this nweet?");
-    console.log(ok);
     if (ok) {
       // delete nweet
+      // firebase의 document에서 nweets라는 컬렉션에 삭제하고싶은 메시지를 찾아 삭제한다.
       await dbService.doc(`/nweets/${nweetObj.id}`).delete();
     }
   };
@@ -35,27 +35,35 @@ const Nweet = ({ nweetObj, isOwner }) => {
     setNewNweet(value);
   };
 
-  // editing이 true인 상태이면 (수정하기를 누르면) 새로 수정할 텍스를 담을 input박스와 취소버트을 보이게 하고
+  // editing이 true인 상태이고(수정하기를 누르면) isOwner(글쓴이)가 true(자신)이면
+  // 새로 수정할 텍스를 담을 input박스와 취소버트을 보이게 하고
   // 그렇지 않으면 삭제버튼과 수정 버튼을 보이게 한다.
   return (
     <div>
       {editing ? (
         <>
-          <form onSubmit={onSubmit}>
-            <input
-              type="text"
-              placeholder="Edit your nweet"
-              value={newNweet}
-              onChange={onChange}
-              required
-            />
-            <input type="submit" value="Update Nweet" />
-          </form>
-          <button onClick={toggleEditing}>Cancel</button>
+          {isOwner && (
+            <>
+              <form onSubmit={onSubmit}>
+                <input
+                  type="text"
+                  placeholder="Edit your nweet"
+                  value={newNweet}
+                  onChange={onChange}
+                  required
+                />
+                <input type="submit" value="Update Nweet" />
+              </form>
+              <button onClick={toggleEditing}>Cancel</button>
+            </>
+          )}
         </>
       ) : (
         <>
           <h4>{nweetObj.text}</h4>
+          {nweetObj.attachmentUrl && (
+            <img src={nweetObj.attachmentUrl} width="50px" height="50px" />
+          )}
           {isOwner && (
             <>
               <button onClick={onDeleteClick}>Delete Nweet</button>

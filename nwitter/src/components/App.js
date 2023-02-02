@@ -5,17 +5,13 @@ import { authService } from "fbase";
 
 function App() {
   const [init, setInit] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userObj, setUserObj] = useState(null);
 
   useEffect(() => {
-    // 로그인이 되면 실행된다.
+    // 로그인 또는 로그아웃이 되면 실행된다.
     authService.onAuthStateChanged((user) => {
       if (user) {
-        setIsLoggedIn(true);
         setUserObj(user); // user를 저장해뒀다가 나중에 필요할 때 사용한다.
-      } else {
-        setIsLoggedIn(false);
       }
       setInit(true);
     });
@@ -24,7 +20,7 @@ function App() {
   return (
     <>
       {init ? (
-        <AppRouter isLoggedIn={isLoggedIn} userObj={userObj} />
+        <AppRouter isLoggedIn={Boolean(userObj)} userObj={userObj} />
       ) : (
         "Initializing..."
       )}
