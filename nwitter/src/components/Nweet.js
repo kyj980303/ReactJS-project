@@ -1,4 +1,4 @@
-import { dbService } from "fbase";
+import { dbService, storageService } from "fbase";
 import React, { useState } from "react";
 
 const Nweet = ({ nweetObj, isOwner }) => {
@@ -13,6 +13,7 @@ const Nweet = ({ nweetObj, isOwner }) => {
       // delete nweet
       // firebase의 document에서 nweets라는 컬렉션에 삭제하고싶은 메시지를 찾아 삭제한다.
       await dbService.doc(`/nweets/${nweetObj.id}`).delete();
+      await storageService.refFromURL(nweetObj.attachmentUrl).delete(); // 이미지 삭제
     }
   };
 
@@ -42,21 +43,17 @@ const Nweet = ({ nweetObj, isOwner }) => {
     <div>
       {editing ? (
         <>
-          {isOwner && (
-            <>
-              <form onSubmit={onSubmit}>
-                <input
-                  type="text"
-                  placeholder="Edit your nweet"
-                  value={newNweet}
-                  onChange={onChange}
-                  required
-                />
-                <input type="submit" value="Update Nweet" />
-              </form>
-              <button onClick={toggleEditing}>Cancel</button>
-            </>
-          )}
+          <form onSubmit={onSubmit}>
+            <input
+              type="text"
+              placeholder="Edit your nweet"
+              value={newNweet}
+              onChange={onChange}
+              required
+            />
+            <input type="submit" value="Update Nweet" />
+          </form>
+          <button onClick={toggleEditing}>Cancel</button>
         </>
       ) : (
         <>

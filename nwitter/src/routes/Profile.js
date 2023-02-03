@@ -1,15 +1,58 @@
-import { authService } from "fbase";
-import React from "react";
+import { authService, dbService } from "fbase";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
-export default () => {
-  const histoty = useHistory(); // logout하면 메인으로 돌아가게하기위해 사용
+export default ({ refreshUser, userObj }) => {
+  const history = useHistory(); // logout하면 메인으로 돌아가게하기위해 사용
+  const [newDisplayName, setNewDisplayName] = useState(userObj.newDisplayName); // 새로운 프로필 이름을 설정하기 위함
+
   const onLogOutClick = () => {
     authService.signOut(); // logout해줌
-    histoty.push("/");
+    history.push("/");
   };
+
+  // 내 정보 불러오기 위함
+  const getMyNweets = async () => {
+    const nweets = await dbService
+      .collection("nweets")
+      .where("creatorId", "==", userObj.uid) // 쿼리 조건문(where 여러개 할 수 있다.)
+      .orderBy("createdAt") // 정렬
+      .get();
+    console.log(nweets.docs.map((doc) => doc.data()));
+  };
+
+  const onChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setNewDisplayName(value);
+  };
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    if (userObj.displayName !== newDisplayName) {
+      await userObj.updateProfile({
+        displayName: newDisplayName,
+      });
+      refreshUser();
+    }
+  };
+
+  useEffect(() => {
+    getMyNweets();
+  });
+
   return (
     <>
+      <form onSubmit={onSubmit}>
+        <input
+          onChange={onChange}
+          type="text"
+          value={newDisplayName}
+          placeholder={userObj.displayName}
+        />
+        <input type="submit" value="Update Profile" />
+      </form>
       <button onClick={onLogOutClick}>LogOut</button>
     </>
   );

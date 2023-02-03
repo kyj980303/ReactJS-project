@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import AppRouter from "components/Router";
-import { useState } from "react";
 import { authService } from "fbase";
 
 function App() {
@@ -11,16 +10,37 @@ function App() {
     // 로그인 또는 로그아웃이 되면 실행된다.
     authService.onAuthStateChanged((user) => {
       if (user) {
-        setUserObj(user); // user를 저장해뒀다가 나중에 필요할 때 사용한다.
+        // user를 저장할 때 필요한 정보만 저장하면 속도가 더 빨라진다.
+        setUserObj({
+          displayName: user.displayName,
+          uid: user.uid,
+          updateProfile: (args) => user.updateProfile(args),
+        });
+      } else {
+        setUserObj(null);
       }
       setInit(true);
     });
   }, []);
 
+  // 프로필에서 이름 변경했을 때 바로 이름이 변경되도록 하기위함
+  const refreshUser = () => {
+    const user = authService.currentUser;
+    setUserObj({
+      displayName: user.displayName,
+      uid: user.uid,
+      updateProfile: (args) => user.updateProfile(args),
+    });
+  };
+
   return (
     <>
       {init ? (
-        <AppRouter isLoggedIn={Boolean(userObj)} userObj={userObj} />
+        <AppRouter
+          refreshUser={refreshUser}
+          isLoggedIn={Boolean(userObj)}
+          userObj={userObj}
+        />
       ) : (
         "Initializing..."
       )}
