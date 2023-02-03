@@ -1,0 +1,272 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul li {
+  list-style: none;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+body {
+  background: #edeff1;
+}
+footer {
+  text-align: center;
+  font-size: 13px;
+}
+#root {
+  width: 375px;
+  height: 750px;
+  background: #ffffff;
+  border-radius: 30px;
+  box-shadow: 10px 10px 30px rgb(174, 174, 192, 0.5);
+  margin: 60px auto;
+  padding: 30px;
+}
+.Auth {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  padding-top: 100px;
+}
+.Auth img {
+  width: 25%;
+  height: auto;
+  margin-bottom: 80px;
+}
+.loginForm .login {
+  width: 100%;
+  height: 40px;
+  border: none;
+  margin-bottom: 10px;
+  padding-left: 4%;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+}
+.loginbtn {
+  background-color: #3296d4;
+  color: #fff;
+  margin-top: 10px;
+  cursor: pointer;
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+}
+.loginbtn:hover {
+  background-color: #226792;
+  transition: all 0.3s;
+}
+.create {
+  display: block;
+  text-align: right;
+  cursor: pointer;
+  margin-top: 5px;
+  color: #226792;
+  margin-bottom: 130px;
+}
+.create:hover {
+  color: #3296d4;
+  transition: all 0.3s;
+}
+.authError {
+  color: red;
+}
+.socialLogin {
+  width: 100%;
+  height: auto;
+  margin-top: 10px;
+}
+.socialLogin button {
+  width: 100%;
+  height: 40px;
+  border: none;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-color: rgb(117, 119, 126);
+  color: #fff;
+  cursor: pointer;
+}
+.socialLogin button:hover {
+  background-color: rgb(94, 95, 99);
+  color: #fff;
+  transition: all 0.3s;
+}
+.goHome {
+  width: 25%;
+  height: auto;
+}
+.goProfile {
+  width: 25%;
+  height: auto;
+  float: right;
+}
+nav {
+  width: 100%;
+  height: 100px;
+}
+nav ul {
+  width: 100%;
+  height: auto;
+}
+nav ul::after {
+  display: block;
+  content: "";
+  clear: both;
+}
+nav ul li {
+  width: 33%;
+  height: auto;
+  float: left;
+}
+nav ul li:nth-of-type(2) {
+  font-size: 20px;
+  font-weight: bold;
+  color: #3296d4;
+  padding-left: 7.5%;
+}
+.textForm {
+  width: 100%;
+  height: auto;
+}
+.textForm .textInput {
+  width: 100%;
+  height: 40px;
+  border-radius: 20px;
+  border: 1.5px solid #3296d4;
+  padding-left: 5%;
+  margin-bottom: 20px;
+}
+.textForm #file {
+  display: none;
+}
+.send {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #3296d4;
+  display: block;
+  text-align: center;
+  float: right;
+  position: relative;
+  top: -60px;
+  padding-top: -2.5px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.send:hover {
+  background-color: rgb(0, 155, 251);
+  transition: all 0.3s;
+  transition: all 0.3s;
+}
+.photos {
+  display: block;
+  text-align: center;
+  color: rgb(0, 130, 211);
+  letter-spacing: 1px;
+  font-size: 15px;
+  margin-bottom: 40px;
+  padding-left: 40px;
+  cursor: pointer;
+}
+.photos:hover {
+  color: rgb(0, 155, 251);
+  transition: all 0.3s;
+}
+.txts {
+  width: 100%;
+  height: 445px;
+  overflow-y: scroll;
+}
+.txt {
+  width: 100%;
+  height: 40px;
+  background-color: rgb(128, 131, 140);
+  color: #fff;
+  border-radius: 10px;
+  padding: 4.5%;
+  font-weight: lighter;
+  font-size: 14px;
+  line-height: 14px;
+  margin-bottom: 10px;
+}
+.debtn {
+  width: 100%;
+  height: auto;
+  margin-top: -15px;
+}
+.deleteBtn img {
+  width: 5%;
+  height: auto;
+  float: right;
+  display: block;
+  margin-right: 2.5%;
+  cursor: pointer;
+}
+.editBtn img {
+  width: 5%;
+  height: auto;
+  float: right;
+  display: block;
+  cursor: pointer;
+}
+.update {
+  width: 100%;
+  height: auto;
+  background-color: rgb(117, 119, 126);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+.editText {
+  width: 100%;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #ffffff;
+  color: #000;
+  padding: 4.5%;
+  font-weight: lighter;
+  font-size: 14px;
+  line-height: 14px;
+  margin-bottom: 10px;
+  border: none;
+}
+.updatetxt {
+  width: 100%;
+  height: 40px;
+  border-radius: 20px;
+  background-color: rgb(102, 153, 255);
+  color: #fff;
+  padding: 4.5%;
+  font-weight: lighter;
+  font-size: 14px;
+  line-height: 14px;
+  margin-bottom: 10px;
+  border: none;
+  cursor: pointer;
+}
+.updatetxt:hover {
+  background-color: rgb(87, 130, 216);
+  transition: all 0.3s;
+}
+.canceltxt:hover {
+  background-color: #db5f5f;
+  transition: all 0.3s;
+}
+.canceltxt {
+  width: 100%;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #ff6e6e;
+  color: #fff;
+  padding: 4.5%;
+  font-weight: lighter;
+  font-size: 14px;
+  line-height: 14px;
+  border: none;
+  cursor: pointer;
+}

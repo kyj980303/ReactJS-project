@@ -5,10 +5,18 @@ const Navigation = ({ userObj }) => (
   <nav>
     <ul>
       <li>
-        <Link to="/">Home</Link>
+        <Link to="/">
+          <img className="goHome" src="img/logo.png" />
+        </Link>
       </li>
       <li>
-        <Link to="/profile">{userObj.displayName} Profile</Link>
+        <Link to="/">Nwiter</Link>
+      </li>
+      <li>
+        <Link to="/profile">
+          <img className="goProfile" src="img/mypage.png" />
+          {/* {userObj.displayName} Profile */}
+        </Link>
       </li>
     </ul>
   </nav>
