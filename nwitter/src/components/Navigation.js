@@ -15,7 +15,6 @@ const Navigation = ({ userObj }) => (
       <li>
         <Link to="/profile">
           <img className="goProfile" src="img/mypage.png" />
-          {/* {userObj.displayName} Profile */}
         </Link>
       </li>
     </ul>

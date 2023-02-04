@@ -42,18 +42,32 @@ export default ({ refreshUser, userObj }) => {
     getMyNweets();
   });
 
+  function updateUserName() {
+    alert("Your username has been changed.");
+  }
+
   return (
     <>
+      <p className="changeUserName">Change Username</p>
       <form onSubmit={onSubmit}>
         <input
+          className="changeName"
           onChange={onChange}
           type="text"
           value={newDisplayName}
           placeholder={userObj.displayName}
         />
-        <input type="submit" value="Update Profile" />
+        <input
+          className="updateProfile"
+          type="submit"
+          value="Update Profile"
+          onClick={updateUserName}
+        />
+        <span className="bar"></span>
       </form>
-      <button onClick={onLogOutClick}>LogOut</button>
+      <button className="logout" onClick={onLogOutClick}>
+        LogOut
+      </button>
     </>
   );
 };

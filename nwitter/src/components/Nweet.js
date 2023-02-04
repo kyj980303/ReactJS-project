@@ -1,7 +1,7 @@
 import { dbService, storageService } from "fbase";
 import React, { useState } from "react";
 
-const Nweet = ({ nweetObj, isOwner }) => {
+const Nweet = ({ nweetObj, userObj, isOwner }) => {
   const [editing, setEditing] = useState(false); // edit모드인지 아닌지 true 또는 false를 리턴
   const [newNweet, setNewNweet] = useState(nweetObj.text); // edit된 새로운 텍스트로 업데이트해주기 위함
 
@@ -62,9 +62,6 @@ const Nweet = ({ nweetObj, isOwner }) => {
         <>
           <div className="txt">
             <h4>{nweetObj.text}</h4>
-            {nweetObj.attachmentUrl && (
-              <img src={nweetObj.attachmentUrl} width="50px" height="50px" />
-            )}
             {isOwner && (
               <>
                 <div className="debtn">
@@ -76,6 +73,9 @@ const Nweet = ({ nweetObj, isOwner }) => {
                   </span>
                 </div>
               </>
+            )}
+            {nweetObj.attachmentUrl && (
+              <img className="sendThumbnail" src={nweetObj.attachmentUrl} />
             )}
           </div>
         </>

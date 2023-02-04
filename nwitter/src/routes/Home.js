@@ -20,18 +20,21 @@ const Home = ({ userObj }) => {
   }, []);
 
   return (
-    <div className="home">
-      <NweetFactory userObj={userObj} />
-      <div className="txts">
-        {nweets.map((nweet) => (
-          <Nweet
-            key={nweet.id}
-            nweetObj={nweet}
-            isOwner={nweet.creatorId === userObj.uid} // 우리가 쓴 댓글에만 수정, 삭제를 보이게 하기위해 내가 작성한 글인지 판별해주는 isOwner을 만들어 보낸다.
-          />
-        ))}
+    <>
+      <div className="home">
+        <NweetFactory userObj={userObj} />
+        <div className="txts">
+          {nweets.map((nweet) => (
+            <Nweet
+              key={nweet.id}
+              nweetObj={nweet}
+              userObj={userObj}
+              isOwner={nweet.creatorId === userObj.uid} // 우리가 쓴 댓글에만 수정, 삭제를 보이게 하기위해 내가 작성한 글인지 판별해주는 isOwner을 만들어 보낸다.
+            />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

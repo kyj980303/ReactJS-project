@@ -63,27 +63,32 @@ const NweetFactory = ({ userObj }) => {
   const onClearAttachmentClick = () => setAttachment(null);
 
   return (
-    <form onSubmit={onSubmit} className="textForm">
-      <input
-        className="textInput"
-        value={nweet}
-        onChange={onChange}
-        type="text"
-        placeholder="What's on your mind?"
-        maxLength={120}
-      />
-      <input type="file" id="file" accept="image/*" onChange={onFileChange} />
-      <input className="send" type="submit" value="➞"></input>
-      <label for="file" className="photos">
-        Add Photos +
-      </label>
-      {attachment && (
-        <div>
-          <img src={attachment} width="50px" height="50px" />
-          <button onClick={onClearAttachmentClick}>Clear</button>
-        </div>
-      )}
-    </form>
+    <>
+      <p className="user">Welcome to {userObj.displayName} 🥳</p>
+      <form onSubmit={onSubmit} className="textForm">
+        <input
+          className="textInput"
+          value={nweet}
+          onChange={onChange}
+          type="text"
+          placeholder="What's on your mind?"
+          maxLength={120}
+        />
+        <input type="file" id="file" accept="image/*" onChange={onFileChange} />
+        <input className="send" type="submit" value="➞"></input>
+        <label for="file" className="photos">
+          Add Photos +
+        </label>
+        {attachment && (
+          <div>
+            <img src={attachment} className="thumbnail" />
+            <button onClick={onClearAttachmentClick} className="removeImage">
+              Remove
+            </button>
+          </div>
+        )}
+      </form>
+    </>
   );
 };
 export default NweetFactory;
