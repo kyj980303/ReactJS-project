@@ -35,6 +35,7 @@ export default ({ refreshUser, userObj }) => {
         displayName: newDisplayName,
       });
       refreshUser();
+      history.push("/");
     }
   };
 

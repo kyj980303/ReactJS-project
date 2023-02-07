@@ -6,7 +6,10 @@ const Navigation = ({ userObj }) => (
     <ul>
       <li>
         <Link to="/">
-          <img className="goHome" src="img/logo.png" />
+          <img
+            className="goHome"
+            src={process.env.PUBLIC_URL + "/img/logo.png"}
+          />
         </Link>
       </li>
       <li>
@@ -14,7 +17,10 @@ const Navigation = ({ userObj }) => (
       </li>
       <li>
         <Link to="/profile">
-          <img className="goProfile" src="img/mypage.png" />
+          <img
+            className="goProfile"
+            src={process.env.PUBLIC_URL + "/img/mypage.png"}
+          />
         </Link>
       </li>
     </ul>

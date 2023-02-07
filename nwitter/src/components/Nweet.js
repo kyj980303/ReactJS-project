@@ -1,7 +1,7 @@
 import { dbService, storageService } from "fbase";
 import React, { useState } from "react";
 
-const Nweet = ({ nweetObj, userObj, isOwner }) => {
+const Nweet = ({ nweetObj, isOwner, userObj }) => {
   const [editing, setEditing] = useState(false); // edit모드인지 아닌지 true 또는 false를 리턴
   const [newNweet, setNewNweet] = useState(nweetObj.text); // edit된 새로운 텍스트로 업데이트해주기 위함
 
@@ -36,6 +36,16 @@ const Nweet = ({ nweetObj, userObj, isOwner }) => {
     setNewNweet(value);
   };
 
+  // 만약 프로필에서 이름을 수정했다면
+  // nweetObj 객체에 있는 이름도 수정된 이름으로 변경해준다.
+  function changeName() {
+    if (nweetObj.creatorId === userObj.uid) {
+      nweetObj.userName = userObj.displayName;
+    }
+  }
+
+  changeName();
+
   // editing이 true인 상태이고(수정하기를 누르면) isOwner(글쓴이)가 true(자신)이면
   // 새로 수정할 텍스를 담을 input박스와 취소버트을 보이게 하고
   // 그렇지 않으면 삭제버튼과 수정 버튼을 보이게 한다.
@@ -64,20 +74,21 @@ const Nweet = ({ nweetObj, userObj, isOwner }) => {
             <h4>{nweetObj.text}</h4>
             {isOwner && (
               <>
-                <div className="debtn">
+                <span className="debtn">
                   <span className="editBtn" onClick={toggleEditing}>
-                    <img src="img/pen.png" />
+                    <img src={process.env.PUBLIC_URL + "/img/pen.png"} />
                   </span>
                   <span className="deleteBtn" onClick={onDeleteClick}>
-                    <img src="img/delete.png" />
+                    <img src={process.env.PUBLIC_URL + "/img/delete.png"} />
                   </span>
-                </div>
+                </span>
               </>
             )}
             {nweetObj.attachmentUrl && (
               <img className="sendThumbnail" src={nweetObj.attachmentUrl} />
             )}
           </div>
+          <p className="userName">from. {nweetObj.userName}</p>
         </>
       )}
     </div>

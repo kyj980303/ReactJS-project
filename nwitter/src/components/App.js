@@ -22,6 +22,7 @@ function App() {
       setInit(true);
     });
   }, []);
+  console.log(userObj);
 
   // 프로필에서 이름 변경했을 때 바로 이름이 변경되도록 하기위함
   const refreshUser = () => {

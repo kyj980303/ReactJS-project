@@ -19,15 +19,16 @@ const NweetFactory = ({ userObj }) => {
       const response = await attachmentRef.putString(attachment, "data_url");
       attachmentUrl = await response.ref.getDownloadURL();
     }
-    const nweetOvj = {
+    const nweetObj = {
       text: nweet,
       createdAt: Date.now(),
       creatorId: userObj.uid,
       attachmentUrl,
+      userName: userObj.displayName,
     };
     // firebase의 collection : nweets라는 키 값을 가진 데이터 베이스에
     // nweet객체를 추가한다.
-    await dbService.collection("nweets").add(nweetOvj);
+    await dbService.collection("nweets").add(nweetObj);
     setNweet("");
     setAttachment("");
   };
@@ -64,7 +65,6 @@ const NweetFactory = ({ userObj }) => {
 
   return (
     <>
-      <p className="user">Welcome to {userObj.displayName} 🥳</p>
       <form onSubmit={onSubmit} className="textForm">
         <input
           className="textInput"
@@ -76,7 +76,7 @@ const NweetFactory = ({ userObj }) => {
         />
         <input type="file" id="file" accept="image/*" onChange={onFileChange} />
         <input className="send" type="submit" value="➞"></input>
-        <label for="file" className="photos">
+        <label htmlFor="file" className="photos">
           Add Photos +
         </label>
         {attachment && (

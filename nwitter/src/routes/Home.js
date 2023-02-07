@@ -4,7 +4,6 @@ import Nweet from "components/Nweet";
 import NweetFactory from "components/NweetFactory";
 
 const Home = ({ userObj }) => {
-  console.log(userObj);
   // 챗팅 묶음
   const [nweets, setNweets] = useState([]);
 
@@ -18,6 +17,7 @@ const Home = ({ userObj }) => {
       setNweets(nweetArray);
     });
   }, []);
+  console.log(nweets);
 
   return (
     <>
