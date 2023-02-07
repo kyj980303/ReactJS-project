@@ -8,11 +8,15 @@ const NweetFactory = ({ userObj }) => {
   const [nweet, setNweet] = useState("");
   // 이미지 파일
   const [attachment, setAttachment] = useState("");
+
   const onSubmit = async (event) => {
     event.preventDefault();
+    if (nweet === "") {
+      return;
+    }
     let attachmentUrl = "";
+    // 사진을 첨부했다면
     if (attachment !== "") {
-      // 사진을 첨부했다면
       const attachmentRef = storageService
         .ref()
         .child(`${userObj.uid}/${uuidv4()}`);

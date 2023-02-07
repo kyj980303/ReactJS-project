@@ -7,10 +7,11 @@ function App() {
   const [userObj, setUserObj] = useState(null);
 
   useEffect(() => {
-    // 로그인 또는 로그아웃이 되면 실행된다.
+    // firebase의 authService.onAuthStateChanged
+    // ==> 로그인 상태가 변경될 때마다 아래의 코드가 실행된다.
     authService.onAuthStateChanged((user) => {
       if (user) {
-        // user를 저장할 때 필요한 정보만 저장하면 속도가 더 빨라진다.
+        // userObj 객체에 필요한 정보를 저장
         setUserObj({
           displayName: user.displayName,
           uid: user.uid,
@@ -24,7 +25,7 @@ function App() {
   }, []);
   console.log(userObj);
 
-  // 프로필에서 이름 변경했을 때 바로 이름이 변경되도록 하기위함
+  // 프로필에서 이름 변경했을 때 바로 이름이 변경되도록 하기위한 코드
   const refreshUser = () => {
     const user = authService.currentUser;
     setUserObj({

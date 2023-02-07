@@ -8,7 +8,8 @@ const Home = ({ userObj }) => {
   const [nweets, setNweets] = useState([]);
 
   useEffect(() => {
-    // firebase에서 실시간으로 데이터를 가져오기 위해 onSpnapshot을 사용한다.
+    // firebase의 onSpnapshot
+    // ==> 실시간으로 데이터를 가져오는 기능을 제공해준다.
     dbService.collection("nweets").onSnapshot((snapshot) => {
       const nweetArray = snapshot.docs.map((doc) => ({
         id: doc.id,
